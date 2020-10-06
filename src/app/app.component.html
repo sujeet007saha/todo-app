@@ -1,0 +1,31 @@
+<div class="container">
+  <form [formGroup]="form" (submit)="addItem()">
+    <div class="form-group">
+      <h1 class="text-center">Todo App</h1>
+      <div class="input-group-prepend">
+        <input
+          id="todo"
+          [formControlName]="'todo'"
+          type="text"
+          class="form-control"
+          placeholder="Add Todo"
+          name="todo"
+        />
+        <span class="input-group-text" (click)="addItem()"> ADD TODO </span>
+      </div>
+      <input [formControlName]="'iscompleted'" type="checkbox" /><label
+        >Complete</label
+      >
+    </div>
+    <div class="data">
+      <ul class="list-unstyled">
+        <li [@moveInLeft] *ngFor="let todo of todoArray; let i = index">
+          {{ todo }}
+
+          <i (click)="deleteItem(i)" class="material-icons">delete</i>
+          <i (click)="editItem(i)" class="material-icons">edit</i>
+        </li>
+      </ul>
+    </div>
+  </form>
+</div>
